@@ -1,9 +1,4 @@
-// 1. LISTADO de PRODUCTOS ¿CÓMO LO VAMOS A RESOLVER?... UN ARRAY CON OBJETOS
-// 2. SABER QUÉ PRODUCTO y CANTIDAD QUIERE EL USUARIO... CON PROMPT
-// 3. IDENTIFICAR EL PRODUCTO USANDO METODO find .
-// 4. VERIFICAR EL STOCK con condicional
-// 5. AGREGAR EL PRODUCTO AL CARRITO con push
-// 6. MOSTRAR EL RESULTADO POR CONSOLE con reduce.
+//maldito ecommerce
 
 
 let cart = []; // carrito vacio
@@ -87,7 +82,6 @@ let itemList = stockTienda.map(el => el.nombre); //crea un listado solo con los 
 //variables de las funciones
 let qtyItem; //cantidad del item siiiii
 let cartItem; //item en si 
-let getNewItem; // agregaras mas items
 let addedItem; //items ya agregados siiiii
 
 //proceso de compra
@@ -105,25 +99,8 @@ function addItem() {
 
 
 //validar que haya items
-function validaItems(ItemName, stockTienda, qty) {
-    addedItem = stockTienda.find(Item => Item.nombre === ItemName.toUpperCase()); //trae el objeto completo para agregarlo como var
-    if (!addedItem) { //si escribiste cualquier cosa que no existe
-        alert("item no existe");
-    } else {
-        console.log(addedItem);
-        console.log(qty)
-        console.log(hayStock(addedItem, qty))
-        bool = hayStock(addedItem, qty)
-        if (bool === true) { //en teoria deberia validar si es true que hay stock avanzar al paso siguiente
-            console.log("validado " + addedItem.nombre)
-            return true;
-        } else if (bool === false) { //si es falso avisar que no queda stock
-            alert("no nos queda mas " + ItemName + " agotado");
-        }
-    }
-}
 
-//sub funcion
+//sub funcion si o no
 
 function hayStock(stock, qty) { //devuleve un bool en base si el stock es mas que lo pedido
     stock = parseInt(addedItem.stock);
@@ -135,23 +112,68 @@ function hayStock(stock, qty) { //devuleve un bool en base si el stock es mas qu
 
 }
 
+//valida
+
+function validaItems(ItemName, stockTienda, qty) {
+    addedItem = stockTienda.find(Item => Item.nombre === ItemName.toUpperCase()); //trae el objeto completo para agregarlo como var
+    if (!addedItem) { //si escribiste cualquier cosa que no existe
+        alert("item no existe");
+    } else {
+        bool = hayStock(addedItem, qty)
+        if (bool === true) { //en teoria deberia validar si es true que hay stock avanzar al paso siguiente
+            return true;
+        } else if (bool === false) { //si es falso avisar que no queda stock
+            alert("no nos queda mas " + ItemName + " agotado");
+        }
+    }
+}
+
 //funcion agregar al carro
 function addCart(addedItem) {
     cart.push(addedItem);
 }
 
 
-//funciones llamados
+//compra
+let getNewItem;//no funcionaba con var local...
 
-addItem(); //llama al prompt
-validaItems(cartItem, stockTienda, qtyItem); //llamada funcion que valida
+function compra() {
+    addItem(); //llama al prompt
+    let masItems = prompt("agrega al carrito s/n?");
+    let valida = validaItems(cartItem, stockTienda, qtyItem)//PASA LA FUNCION QUE VALIDA
+    if (valida === true) {
+        if (masItems.toLowerCase() === "s") {
+            let articulo = new CartItem(addedItem, qtyItem)
+            addCart(articulo)
+            getNewItem = prompt("quiere agregas mas items?? s/n"); // agregaras mas items
+
+        } else {
+            getNewItem = prompt("quiere agregas mas items?? s/n");//pregunta solo y no agrega nada
+
+        }
+    } else {
+        alert("lo siento no hay");
+        getNewItem = prompt("quiere agregas mas items?? s/n");
+        
+    }
+}
+
+
+//armando la funcion 
+compra();
+while (getNewItem.toLowerCase() == "s") {
+   compra();
+}
+
+//para ver carrito
+
+alert("el carrito estara en la consola despues que apretes aceptar")
+
+
 
 
 
 
 //mas debugging
-console.log(itemList);
-console.log("nombre " + cartItem) //valida nombre
-console.log("cantidad " + qtyItem) //valida cant
-console.log("este es el carrito");
+console.log("ESTE ES EL CARRITO por favor abrir el array para ver subtotales:");
 console.log(cart);
