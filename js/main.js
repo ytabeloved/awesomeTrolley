@@ -25,7 +25,7 @@ const stockTienda = [{
         precio: 1500,
         stock: 10,
         descr: "descripcion prod",
-        foto: "url",
+        foto: "/asset/img/polera.jpg",
         itemNum: 1,
     },
     {
@@ -33,23 +33,23 @@ const stockTienda = [{
         precio: 1500,
         stock: 10,
         descr: "descripcion prod",
-        foto: "url",
+        foto: "/asset/img/gorro.jpg",
         itemNum: 2,
     },
     {
-        nombre: "CALZAS",
+        nombre: "VESTIDO",
         precio: 1500,
         stock: 10,
         descr: "descripcion prod",
-        foto: "url",
+        foto: "/asset/img/vestido.jpg",
         itemNum: 3,
     },
     {
-        nombre: "LEGGINS",
+        nombre: "DISFRAZ OSITO",
         precio: 1500,
         stock: 0,
         descr: "descripcion prod",
-        foto: "url",
+        foto: "/asset/img/osito.jpg",
         itemNum: 4,
     },
     {
@@ -57,7 +57,15 @@ const stockTienda = [{
         precio: 1500,
         stock: 10,
         descr: "descripcion prod",
-        foto: "url",
+        foto: "/asset/img/shorts.jpg",
+        itemNum: 5,
+    },
+    {
+        nombre: "ZAPATOS",
+        precio: 1500,
+        stock: 10,
+        descr: "descripcion prod",
+        foto: "/asset/img/zapatos.jpg",
         itemNum: 5,
     }
 ];
@@ -183,7 +191,7 @@ alert("el carrito estara en la consola despues que apretes aceptar")
 console.log("ESTE ES EL CARRITO por favor abrir el array para ver subtotales:");
 console.log(cart);*/
 
-//man8upula el DOM creando una liksta simple desde un array
+//manipula el DOM creando una liksta simple desde un array
 
 let list = document.getElementById("itemList");
 console.log(list)
@@ -199,10 +207,13 @@ itemList.forEach((item) => {
 
 for (const producto of stockTienda) {
     let items = document.getElementById("itemsDisplay");
-    items.innerHTML += `<h3 class=items> nombre: ${producto.nombre}</h3>
+    items.innerHTML += `<div class="prodCard"><h3 class=items> nombre: ${producto.nombre}</h3>
     <p > precio: ${producto.precio} </p><b></b >
     <p > stock: ${producto.stock} </p><b></b > 
-    <p > item Num: ${producto.itemNum} </p><b></b >`;
+    <p > item Num: ${producto.itemNum} </p><b></b >
+    <button class="addButton" type="button">agregar al carrito</button>
+    <img class= "previewProd" src= ${producto.foto}> </p><b></b >
+    </div>`;
 }
 
 
