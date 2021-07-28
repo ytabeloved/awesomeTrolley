@@ -183,7 +183,7 @@ alert("el carrito estara en la consola despues que apretes aceptar")
 console.log("ESTE ES EL CARRITO por favor abrir el array para ver subtotales:");
 console.log(cart);*/
 
-//man8upula el DOM
+//man8upula el DOM creando una liksta simple desde un array
 
 let list = document.getElementById("itemList");
 console.log(list)
@@ -194,3 +194,39 @@ itemList.forEach((item) => {
     }
 
 );
+
+//crea una lista en base a un objeto y plantillas de texto literal
+
+for (const producto of stockTienda) {
+    let items = document.getElementById("itemsDisplay");
+    items.innerHTML += `<h3 class=items> nombre: ${producto.nombre}</h3>
+    <p > precio: ${producto.precio} </p><b></b >
+    <p > stock: ${producto.stock} </p><b></b > 
+    <p > item Num: ${producto.itemNum} </p><b></b >`;
+}
+
+
+
+
+//mensaje de bienvenida random 
+
+
+let saludos = ["Hola Florecita!!", "Hola cacahuate!!", "Bienvenido meloncito!",
+    "Hola ratoncito!!", "hola gatito!!", "welcome pastito!!"
+];
+//funcion de index random
+
+function random(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+let mystery = Math.round(random(0, (saludos.length - 1)));
+
+
+
+//mnipulacion del DOM para el saljudo
+let saludo = document.getElementById("saludo");
+let h1 = document.createElement("h1");
+let hola = saludos[mystery];
+h1.innerHTML = hola;
+saludo.appendChild(h1);
