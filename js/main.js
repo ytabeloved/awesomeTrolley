@@ -75,10 +75,15 @@ class CartItem { //crea un subitem del carrito ejemplo "2 x poleras x 3000 pesos
     }
 }
 
+
+
+
 //crea lista de items disponibles en tienda
 let itemList = stockTienda.map(el => el.nombre); //crea un listado solo con los  nombres pasando el array como elemento (eso es "el") y busca la propiedad nombre
 
 
+
+/*
 //variables de las funciones
 let qtyItem; //cantidad del item siiiii
 let cartItem; //item en si 
@@ -135,12 +140,12 @@ function addCart(addedItem) {
 
 
 //compra
-let getNewItem;//no funcionaba con var local...
+let getNewItem; //no funcionaba con var local...
 
 function compra() {
     addItem(); //llama al prompt
     let masItems = prompt("agrega al carrito s/n?");
-    let valida = validaItems(cartItem, stockTienda, qtyItem)//PASA LA FUNCION QUE VALIDA
+    let valida = validaItems(cartItem, stockTienda, qtyItem) //PASA LA FUNCION QUE VALIDA
     if (valida === true) {
         if (masItems.toLowerCase() === "s") {
             let articulo = new CartItem(addedItem, qtyItem)
@@ -148,13 +153,13 @@ function compra() {
             getNewItem = prompt("quiere agregas mas items?? s/n"); // agregaras mas items
 
         } else {
-            getNewItem = prompt("quiere agregas mas items?? s/n");//pregunta solo y no agrega nada
+            getNewItem = prompt("quiere agregas mas items?? s/n"); //pregunta solo y no agrega nada
 
         }
     } else {
         alert("lo siento no hay");
         getNewItem = prompt("quiere agregas mas items?? s/n");
-        
+
     }
 }
 
@@ -162,7 +167,7 @@ function compra() {
 //armando la funcion 
 compra();
 while (getNewItem.toLowerCase() == "s") {
-   compra();
+    compra();
 }
 
 //para ver carrito
@@ -176,4 +181,16 @@ alert("el carrito estara en la consola despues que apretes aceptar")
 
 //mas debugging
 console.log("ESTE ES EL CARRITO por favor abrir el array para ver subtotales:");
-console.log(cart);
+console.log(cart);*/
+
+//man8upula el DOM
+
+let list = document.getElementById("itemList");
+console.log(list)
+itemList.forEach((item) => {
+        let li = document.createElement("li");
+        li.innerText = item;
+        list.appendChild(li);
+    }
+
+);
