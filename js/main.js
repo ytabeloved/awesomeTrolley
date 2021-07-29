@@ -71,6 +71,30 @@ const stockTienda = [{
 ];
 
 
+//borrar el carrito con boton eliminar **debo crear el boton aun**
+
+let removeCartItem = document.getElementsByClassName("botonRemover");
+console.log(removeCartItem);
+
+
+
+for (let i = 0; i < removeCartItem.length; i++) {
+    let button = removeCartItem[i];
+    button.addEventListener('click', function () {
+        console.log('clicked')
+    })
+}
+
+
+
+
+
+//crea lista de items disponibles en tienda YA NO LO NECESITO PORQUE LOS PROD ESTAN CREADOS EN FORMATO CARDS
+//let itemList = stockTienda.map(el => el.nombre); //crea un listado solo con los  nombres pasando el array como elemento (eso es "el") y busca la propiedad nombre
+
+//ALERTA DE CODIGO MUERTO
+
+/* NO PUDE REPLICAR EL PROCESO CON EVENT HANDLERS ASI QUE LO HARE MAS ABAJO.
 
 class CartItem { //crea un subitem del carrito ejemplo "2 x poleras x 3000 pesos"
     constructor(item, qty) {
@@ -83,15 +107,6 @@ class CartItem { //crea un subitem del carrito ejemplo "2 x poleras x 3000 pesos
     }
 }
 
-
-
-
-//crea lista de items disponibles en tienda
-let itemList = stockTienda.map(el => el.nombre); //crea un listado solo con los  nombres pasando el array como elemento (eso es "el") y busca la propiedad nombre
-
-
-
-/*
 //variables de las funciones
 let qtyItem; //cantidad del item siiiii
 let cartItem; //item en si 
@@ -190,54 +205,3 @@ alert("el carrito estara en la consola despues que apretes aceptar")
 //mas debugging
 console.log("ESTE ES EL CARRITO por favor abrir el array para ver subtotales:");
 console.log(cart);*/
-
-//manipula el DOM creando una liksta simple desde un array
-
-let list = document.getElementById("itemList");
-console.log(list)
-itemList.forEach((item) => {
-        let li = document.createElement("li");
-        li.innerText = item;
-        list.appendChild(li);
-    }
-
-);
-
-//crea una lista en base a un objeto y plantillas de texto literal
-
-for (const producto of stockTienda) {
-    let items = document.getElementById("itemsDisplay");
-    items.innerHTML += `<div class="prodCard"><h3 class=items> nombre: ${producto.nombre}</h3>
-    <p > precio: ${producto.precio} </p><b></b >
-    <p > stock: ${producto.stock} </p><b></b > 
-    <p > item Num: ${producto.itemNum} </p><b></b >
-    <button class="addButton" type="button">agregar al carrito</button>
-    <img class= "previewProd" src= ${producto.foto}> </p><b></b >
-    </div>`;
-}
-
-
-
-
-//mensaje de bienvenida random 
-
-
-let saludos = ["Hola Florecita!!", "Hola cacahuate!!", "Bienvenido meloncito!",
-    "Hola ratoncito!!", "hola gatito!!", "welcome pastito!!"
-];
-//funcion de index random
-
-function random(min, max) {
-    return Math.random() * (max - min) + min;
-}
-
-let mystery = Math.round(random(0, (saludos.length - 1)));
-
-
-
-//mnipulacion del DOM para el saljudo
-let saludo = document.getElementById("saludo");
-let h1 = document.createElement("h1");
-let hola = saludos[mystery];
-h1.innerHTML = hola;
-saludo.appendChild(h1);
