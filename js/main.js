@@ -71,22 +71,20 @@ const stockTienda = [{
 ];
 
 
-//borrar el carrito con boton eliminar **debo crear el boton aun**
-
-let removeCartItem = document.getElementsByClassName("botonRemover");
-console.log(removeCartItem);
-
-
-
-for (let i = 0; i < removeCartItem.length; i++) {
-    let button = removeCartItem[i];
-    button.addEventListener('click', function () {
-        console.log('clicked')
-    })
-}
+//REPLANTEO CARRITO DE COMPRA:
+//1)BOTON AGREGAR DEBE TOMAR NOMBRE QTY Y PRECIO Y ENVIAR A CARRITO
+//2)CADA VEZ QUE APRETE EL BOTON DESPUES SOLO DEBE INCREMENTAR LA QTY
+//BOTON DE ITEM CON STOCK EN CERO ARROJAR MENSAJE DE QUE NO HAY STOCK
+//ICONO OSITO ABRE MODAL CON CARRITO
+//CARRITO DEBE ESTAR EN FORMATO TABLA
+//CARRITO DEBE TOMAR NOMBRE, PRECIO  Y CANTIDAD Y ABAJO MOSTRAR SUBTOTAL
+//CARRITO DEBE TENER BOTON REMOVE AL LADO DE CADA ITEM
+//BOTON REMOVE DEBE REMOVER ITEMS DE CARRITO
+//CARRITO DEBE TENER BOTON COMPRAR
+//CARRITO DEBE QUEDAR ALMACENADO EN EL STORAGE LOCAL.
 
 
-
+/*PREPARACION PARA PRE ENTREGA */
 
 
 //crea lista de items disponibles en tienda YA NO LO NECESITO PORQUE LOS PROD ESTAN CREADOS EN FORMATO CARDS
