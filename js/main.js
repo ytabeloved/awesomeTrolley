@@ -1,7 +1,7 @@
 //maldito ecommerce
 
 
-let cart = []; // carrito vacio
+
 
 //constructor items para el futuro cuando quiera agregar mas
 
@@ -84,122 +84,60 @@ const stockTienda = [{
 //CARRITO DEBE QUEDAR ALMACENADO EN EL STORAGE LOCAL.
 
 
-/*PREPARACION PARA PRE ENTREGA */
+/*PREPARACION PARA PRE ENTREGA y desafio 9*/
 
+const cart = []; // carrito vacio
 
-//crea lista de items disponibles en tienda YA NO LO NECESITO PORQUE LOS PROD ESTAN CREADOS EN FORMATO CARDS
-//let itemList = stockTienda.map(el => el.nombre); //crea un listado solo con los  nombres pasando el array como elemento (eso es "el") y busca la propiedad nombre
+//funcion agregar y mostrar carrito
 
-//ALERTA DE CODIGO MUERTO
-
-/* NO PUDE REPLICAR EL PROCESO CON EVENT HANDLERS ASI QUE LO HARE MAS ABAJO.
-
-class CartItem { //crea un subitem del carrito ejemplo "2 x poleras x 3000 pesos"
-    constructor(item, qty) {
-        this.nombre = item.nombre; //saca el nombre del item guardado en el stock tienda
-        this.precio = item.precio;
-        this.itemNum = item.itemNum; //codigo para encontrar el item
-        this.qty = qty;
-        this.subtotal = item.precio * qty //subtotal del item individual
-
-    }
-}
-
-//variables de las funciones
-let qtyItem; //cantidad del item siiiii
-let cartItem; //item en si 
-let addedItem; //items ya agregados siiiii
-
-//proceso de compra
-
-//elegir un item
-
-function addItem() {
-    do {
-        cartItem = prompt("elije uno de estos productos: " + itemList);
-        qtyItem = prompt("cuantos quieres?: ")
-    }
-    while (cartItem === "" || isNaN(cartItem) !== true || cartItem === null)
-
-}
-
-
-//validar que haya items
-
-//sub funcion si o no
-
-function hayStock(stock, qty) { //devuleve un bool en base si el stock es mas que lo pedido
-    stock = parseInt(addedItem.stock);
-    if (stock >= qty) {
-        return true;
-    } else {
-        return false;
-    }
-
-}
-
-//valida
-
-function validaItems(ItemName, stockTienda, qty) {
-    addedItem = stockTienda.find(Item => Item.nombre === ItemName.toUpperCase()); //trae el objeto completo para agregarlo como var
-    if (!addedItem) { //si escribiste cualquier cosa que no existe
-        alert("item no existe");
-    } else {
-        bool = hayStock(addedItem, qty)
-        if (bool === true) { //en teoria deberia validar si es true que hay stock avanzar al paso siguiente
-            return true;
-        } else if (bool === false) { //si es falso avisar que no queda stock
-            alert("no nos queda mas " + ItemName + " agotado");
+function agregaCarrito(nombre, precio) {
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].nombre === nombre) {
+            cart[i].qty += 1;
+            return
         }
     }
-}
+    const item = {
+        nombre: nombre,
+        precio: precio,
+        qty: 1
+    } //arma un item basado en lso obj principales para usar para el carrito
+    cart.push(item)
 
-//funcion agregar al carro
-function addCart(addedItem) {
-    cart.push(addedItem);
-}
+};
 
-
-//compra
-let getNewItem; //no funcionaba con var local...
-
-function compra() {
-    addItem(); //llama al prompt
-    let masItems = prompt("agrega al carrito s/n?");
-    let valida = validaItems(cartItem, stockTienda, qtyItem) //PASA LA FUNCION QUE VALIDA
-    if (valida === true) {
-        if (masItems.toLowerCase() === "s") {
-            let articulo = new CartItem(addedItem, qtyItem)
-            addCart(articulo)
-            getNewItem = prompt("quiere agregas mas items?? s/n"); // agregaras mas items
-
-        } else {
-            getNewItem = prompt("quiere agregas mas items?? s/n"); //pregunta solo y no agrega nada
-
-        }
-    } else {
-        alert("lo siento no hay");
-        getNewItem = prompt("quiere agregas mas items?? s/n");
-
+//funcion para la cantidad
+function Qty() {
+    let qty = 0;
+    for (let i = 0; i < cart.length; i++) {
+        qty += cart[i].qty;
     }
+    return qty
 }
 
 
-//armando la funcion 
-compra();
-while (getNewItem.toLowerCase() == "s") {
-    compra();
+function muestraCarrito() {
+
+    console.log(`tiene ${Qty()} items en su carrito`); // llama la funcion de la cantidad
+    for (let i = 0; i < cart.length; i++) { //recorro array
+        console.log(`- ${cart[i].nombre} $${cart[i].precio} x ${cart[i].qty}`) //mensaje que despues creara un html
+    }
+
+    console.log(`su total es $${Total()} pesos`)
+};
+
+
+//funcion total
+function Total() {
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+        total += cart[i].precio * cart[i].qty;
+    }
+    return total
 }
 
-//para ver carrito
-
-alert("el carrito estara en la consola despues que apretes aceptar")
-
-
-
-
-
-
-//mas debugging
-console.log("ESTE ES EL CARRITO por favor abrir el array para ver subtotales:");
-console.log(cart);*/
+agregaCarrito('vestido', 3500)
+agregaCarrito('vestido', 3500);
+agregaCarrito('gorro', 3500);
+agregaCarrito('gorro', 3500);
+muestraCarrito();
