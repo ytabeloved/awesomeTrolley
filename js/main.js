@@ -86,15 +86,17 @@ const stockTienda = [{
 
 /*PREPARACION PARA PRE ENTREGA y desafio 9*/
 
-//load cart
+//load cart de locale storage
 let loadCart = function () {
     if (localStorage.getItem('cartStorage')) {
         cartStorage = JSON.parse(localStorage.getItem('cartStorage'));
         return cartStorage
+    } else {
+        return arr = [] //entrega un array vacio en caso de que no haya nada en locale storage
     }
 }
 
-const cart = loadCart(); // carrito vacio
+const cart = loadCart(); // carrito vacio o con memoria
 
 
 //funcion agregar y mostrar carrito
@@ -120,23 +122,29 @@ function agregaCarrito(nombre, precio) {
 //funcion para la cantidad
 function Qty() {
     let qty = 0;
-    for (let i = 0; i < cart.length; i++) {
-        qty += cart[i].qty;
+    if (cart === undefined) { //en caso de que el carrito este vacio define que no hay nada
+        return qty = 0;
+    } else {
+        for (let i = 0; i < cart.length; i++) {
+            qty += cart[i].qty;
+        }
+        return qty
     }
-    return qty
 }
 
 //MUESTRA EL CARRITO EN EL MODAL
-function muestraCarrito() {    
+function muestraCarrito() {
     cartQty.innerHTML = `tiene ${Qty()} items en su carrito`; // llama la funcion de la cantidad Y LA APLICA SOBRE LA VAR DEFINIDA EN DOM
-
     let itemGlosa = "";
 
     for (let i = 0; i < cart.length; i++) { //recorro array
         itemGlosa += `<li>${cart[i].nombre}
         $${cart[i].precio} x ${cart[i].qty} = 
-        $${cart[i].precio* cart[i].qty} </li>` //agrega el elemento html al modal de carrito
+        $${cart[i].precio* cart[i].qty} 
+        <button data-name="${cart[i].nombre}" class="btn btn-danger btn-sm removerItem">quitar</button>
+        </li>` //agrega el elemento html al modal de carrito
     }
+
     itemList.innerHTML = itemGlosa;
     subTotal.innerHTML = `su total es $${Total()} pesos`; //subtotal del carrito
 
@@ -166,3 +174,14 @@ function Total() {
     }
     return total
 }
+
+//funciones para limpiar el carrito
+
+/*function removerItem(nombre){
+    for(let i= 0: i < cart.length; i++){
+        if(cart[i].name===name){
+            cart.splice(i, 1)
+            return
+        }
+    }
+}*/

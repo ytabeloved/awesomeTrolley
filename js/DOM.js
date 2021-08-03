@@ -58,7 +58,7 @@ const itemList = document.getElementById("lista items");
 const cartQty = document.getElementById("cart-qty");
 const subTotal = document.getElementById("cart-total");
 
-muestraCarrito();
+muestraCarrito();//muestra carrito si es que hay items en locale storage si no carrito estara vacio
 
 //ejemplo de evento agrega a carrito 
 let allBoton = Array.from(document.querySelectorAll(".agregar")); //selecciona todos los botones con el class agregar y los pasa a un array
