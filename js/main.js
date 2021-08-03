@@ -118,12 +118,18 @@ function Qty() {
 
 function muestraCarrito() {
 
-    console.log(`tiene ${Qty()} items en su carrito`); // llama la funcion de la cantidad
-    for (let i = 0; i < cart.length; i++) { //recorro array
-        console.log(`- ${cart[i].nombre} $${cart[i].precio} x ${cart[i].qty}`) //mensaje que despues creara un html
-    }
+    cartQty.innerHTML = `tiene ${Qty()} items en su carrito`; // llama la funcion de la cantidad
 
-    console.log(`su total es $${Total()} pesos`)
+    let itemGlosa = "";
+
+    for (let i = 0; i < cart.length; i++) { //recorro array
+        itemGlosa += `<li>${cart[i].nombre}
+        $${cart[i].precio} x ${cart[i].qty} = 
+        $${cart[i].precio* cart[i].qty} </li>` //agrega el elemento html al modal de carrito
+    }
+    itemList.innerHTML = itemGlosa;
+    subTotal.innerHTML=`su total es $${Total()} pesos`;//subtotal del carrito
+    
 };
 
 
@@ -135,9 +141,3 @@ function Total() {
     }
     return total
 }
-
-agregaCarrito('vestido', 3500)
-agregaCarrito('vestido', 3500);
-agregaCarrito('gorro', 3500);
-agregaCarrito('gorro', 3500);
-muestraCarrito();

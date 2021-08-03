@@ -11,7 +11,7 @@ for (const producto of stockTienda) {
       <p class="card-text">Sku: ${producto.itemNum}</p>
       <div class="row row-cols-2">
       <div class= col col-lg-2>
-      <button class="btn btn-primary" id="agregar" type= "button">agregar</button>
+      <button class="btn btn-primary agregar"  id="${producto.nombre}" data-price ="${producto.precio}" type= "button">agregar</button>
       </div>
       <div class= col col-lg-2>
      
@@ -52,9 +52,19 @@ saludo.appendChild(h1);
 
 //EVENT LISTENERS DESAFIO 9
 
-let counter = 0;
+const itemList = document.getElementById("lista items");
+const cartQty = document.getElementById("cart-qty");
+const subTotal = document.getElementById("cart-total");
+
+console.log(itemList)
 
 //ejemplo de evento agrega a carrito 
-let allBoton = Array.from (document.querySelectorAll("#agregar"));//selecciona todos los botones con el id agregar y los pasa a un array
+let allBoton = Array.from(document.querySelectorAll(".agregar")); //selecciona todos los botones con el class agregar y los pasa a un array
+allBoton.forEach(ele => ele.addEventListener('click', () => {
+  agregaCarrito(ele.getAttribute('id'),ele.getAttribute(`data-price`))//ele significa elemento
+  muestraCarrito();
+}))
+
 console.log(allBoton)
 
+//let allBoton = Array.from(document.querySelectorAll(".agregar"))

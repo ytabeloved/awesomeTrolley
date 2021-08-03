@@ -55,9 +55,9 @@
         <h2 class="placeholder">.</h2>
         <div id="saludo"></div>
     </div>
-        <!-- Button trigger modal -->
-    <img src="/asset/img/ositologo.jpg" class="rounded float-end fixed-bottom carrito" id= "carritoImg" alt="carrito" width="80"
-        height="70" data-bs-toggle="modal" data-bs-target="#carrito">
+    <!-- Button trigger modal -->
+    <img src="/asset/img/ositologo.jpg" class="rounded float-end fixed-bottom carrito" id="carritoImg" alt="carrito"
+        width="80" height="70" data-bs-toggle="modal" data-bs-target="#carrito">
 
     <!-- Modal -->
     <div class="modal fade" id="carrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -69,7 +69,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <div id='cart-qty'>
+                        <!-- cart qty here -->
+                    </div>
+                    <ul id="lista items">
+                        <!--aqui van item de carrito-->
+                    </ul>
+                    <div id='cart-total'>
+                        <!-- cart total -->
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -87,7 +95,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Library</li>
             </ol>
         </nav>
-            </footer>
+    </footer>
     <script src="/js/main.js"></script>
     <script src="js/DOM.js"></script>
 </body>
