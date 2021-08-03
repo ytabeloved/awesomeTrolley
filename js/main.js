@@ -88,6 +88,7 @@ const stockTienda = [{
 
 const cart = []; // carrito vacio
 
+
 //funcion agregar y mostrar carrito
 
 function agregaCarrito(nombre, precio) {
@@ -103,8 +104,10 @@ function agregaCarrito(nombre, precio) {
         qty: 1
     } //arma un item basado en lso obj principales para usar para el carrito
     cart.push(item)
-
+    //return el carrito 
+    return cart;    
 };
+
 
 //funcion para la cantidad
 function Qty() {
@@ -116,9 +119,21 @@ function Qty() {
 }
 
 
-function muestraCarrito() {
+//usaLOCAL STORAGE...no funcionaaaaa
+console.log(cart.length)
+const cartLS = (clave, valor) => {
+    localStorage.setItem(clave, valor)
+};
+cartLS("carritoGuardado", JSON.stringify(cart));
 
-    cartQty.innerHTML = `tiene ${Qty()} items en su carrito`; // llama la funcion de la cantidad
+JSON.parse(localStorage.getItem("cart")) //recupera el carrito guardado
+
+
+
+
+//MUESTRA EL CARRITO EN EL MODAL
+function muestraCarrito() {
+    cartQty.innerHTML = `tiene ${Qty()} items en su carrito`; // llama la funcion de la cantidad Y LA APLICA SOBRE LA VAR DEFINIDA EN DOM
 
     let itemGlosa = "";
 
@@ -128,12 +143,14 @@ function muestraCarrito() {
         $${cart[i].precio* cart[i].qty} </li>` //agrega el elemento html al modal de carrito
     }
     itemList.innerHTML = itemGlosa;
-    subTotal.innerHTML=`su total es $${Total()} pesos`;//subtotal del carrito
-    
+    subTotal.innerHTML = `su total es $${Total()} pesos`; //subtotal del carrito
+    //por aqui asumo recupero el maldito JSON
 };
 
 
-//funcion total
+
+
+//SUB-funcion total
 function Total() {
     let total = 0;
     for (let i = 0; i < cart.length; i++) {

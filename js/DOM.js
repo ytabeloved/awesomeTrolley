@@ -56,15 +56,15 @@ const itemList = document.getElementById("lista items");
 const cartQty = document.getElementById("cart-qty");
 const subTotal = document.getElementById("cart-total");
 
-console.log(itemList)
 
 //ejemplo de evento agrega a carrito 
 let allBoton = Array.from(document.querySelectorAll(".agregar")); //selecciona todos los botones con el class agregar y los pasa a un array
 allBoton.forEach(ele => ele.addEventListener('click', () => {
   agregaCarrito(ele.getAttribute('id'),ele.getAttribute(`data-price`))//ele significa elemento
   muestraCarrito();
+ 
 }))
 
-console.log(allBoton)
+
 
 //let allBoton = Array.from(document.querySelectorAll(".agregar"))
