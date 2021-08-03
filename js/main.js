@@ -72,31 +72,31 @@ const stockTienda = [{
 
 
 //REPLANTEO CARRITO DE COMPRA:
-//1)BOTON AGREGAR DEBE TOMAR NOMBRE QTY Y PRECIO Y ENVIAR A CARRITO
-//2)CADA VEZ QUE APRETE EL BOTON DESPUES SOLO DEBE INCREMENTAR LA QTY
-//BOTON DE ITEM CON STOCK EN CERO ARROJAR MENSAJE DE QUE NO HAY STOCK
-//ICONO OSITO ABRE MODAL CON CARRITO
+//1)BOTON AGREGAR DEBE TOMAR NOMBRE QTY Y PRECIO Y ENVIAR A CARRITO CHECK
+//2)CADA VEZ QUE APRETE EL BOTON DESPUES SOLO DEBE INCREMENTAR LA QTY CHECK
+//BOTON DE ITEM CON STOCK EN CERO ARROJAR MENSAJE DE QUE NO HAY STOCK 
+//ICONO OSITO ABRE MODAL CON CARRITO CHECK
 //CARRITO DEBE ESTAR EN FORMATO TABLA
-//CARRITO DEBE TOMAR NOMBRE, PRECIO  Y CANTIDAD Y ABAJO MOSTRAR SUBTOTAL
-//CARRITO DEBE TENER BOTON REMOVE AL LADO DE CADA ITEM
-//BOTON REMOVE DEBE REMOVER ITEMS DE CARRITO
+//CARRITO DEBE TOMAR NOMBRE, PRECIO  Y CANTIDAD Y ABAJO MOSTRAR SUBTOTAL CHECK
+//CARRITO DEBE TENER BOTON REMOVE AL LADO DE CADA ITEM CHECK
+//BOTON REMOVE DEBE REMOVER ITEMS DE CARRITO CHECK
 //CARRITO DEBE TENER BOTON COMPRAR
-//CARRITO DEBE QUEDAR ALMACENADO EN EL STORAGE LOCAL.
+//CARRITO DEBE QUEDAR ALMACENADO EN EL STORAGE LOCAL. CHECK
 
 
 /*PREPARACION PARA PRE ENTREGA y desafio 9*/
 
 //load cart de locale storage
 let loadCart = function () {
-    if (localStorage.getItem('cartStorage')) {
-        cartStorage = JSON.parse(localStorage.getItem('cartStorage'));
+    if (localStorage.getItem('cartStorage')) { //SI EXISTE UN LOCAL STORAGE ENTONCES
+        cartStorage = JSON.parse(localStorage.getItem('cartStorage')); //recupera el maldito carro y regresalo como resultado
         return cartStorage
     } else {
-        return arr = [] //entrega un array vacio en caso de que no haya nada en locale storage
+        return arr = [] //entrega un array vacio en caso de que no haya nada en locale storage, asi el carrito no colapsa cuando no hay sesion previa guardada
     }
 }
 
-const cart = loadCart(); // carrito vacio o con memoria
+const cart = loadCart(); // carrito vacio o con memoria, le digo oye tu carrito seras siempre la sesion anterior guardada
 
 
 //funcion agregar y mostrar carrito
@@ -105,6 +105,7 @@ function agregaCarrito(nombre, precio) {
     for (let i = 0; i < cart.length; i++) {
         if (cart[i].nombre === nombre) {
             cart[i].qty += 1;
+            muestraCarrito()//actualiza carrito
             return
         }
     }
@@ -141,8 +142,10 @@ function muestraCarrito() {
         itemGlosa += `<li>${cart[i].nombre}
         $${cart[i].precio} x ${cart[i].qty} = 
         $${cart[i].precio* cart[i].qty} 
-        <button data-name="${cart[i].nombre}" class="btn btn-danger btn-sm removerItem">quitar</button>
-        </li>` //agrega el elemento html al modal de carrito
+        <button data-name="${cart[i].nombre}" class="agrega1">+</button> 
+        <button data-name="${cart[i].nombre}" class="remueve1">-</button>
+        <button data-name="${cart[i].nombre}" class="btn btn-danger btn-sm removerItem">quitar</button>          
+        </li>` //agrega el elemento html al modal de carrito Y LOS BOTONES DE QUITAR Y AGREGAR POR NUM
     }
 
     itemList.innerHTML = itemGlosa;
@@ -154,13 +157,13 @@ function muestraCarrito() {
 
 function LStorage(item) {
     let cartStorage = []
-    item.forEach(element => {
-        cartStorage.push({
+    item.forEach(element => { //loopea por el array, ahi le vamos a pasar el carrito que es un array de objetos
+        cartStorage.push({ //agarra cada item de carrito y lo pushea al array de storage
             nombre: element.nombre,
             precio: element.precio,
             qty: element.qty
         })
-        localStorage.setItem('cartStorage', JSON.stringify(cartStorage))
+        localStorage.setItem('cartStorage', JSON.stringify(cartStorage)) //lo graba pasandolo  JSON
     });
 
 }

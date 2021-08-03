@@ -1,6 +1,6 @@
 //crea una lista en base a un objeto y plantillas de texto literal
 
-for (const producto of stockTienda) {
+for (const producto of stockTienda) { //AQUI HACEMOS LAS TARJETAS DE PRODUCTOS
   let items = document.getElementById("itemsDisplay");
   items.innerHTML += `<div class="card" style="width: 18rem;">
     <img src="${producto.foto}" class="card-img-top" alt="...">
@@ -54,32 +54,38 @@ saludo.appendChild(h1);
 //carga carrito guardado
 
 
-const itemList = document.getElementById("lista items");
+const itemList = document.getElementById("lista items"); //CREA LISTA DE NODO CON LA CLASE INDICADA
 const cartQty = document.getElementById("cart-qty");
 const subTotal = document.getElementById("cart-total");
 
-muestraCarrito(); //muestra carrito si es que hay items en locale storage si no carrito estara vacio
+muestraCarrito(); //muestra carrito si es que hay items en locale storage si no carrito estara vacio O SEA LA CARGA INICIAL DEL CARRITO
 
 // evento agrega a carrito 
 let allBoton = Array.from(document.querySelectorAll(".agregar")); //selecciona todos los botones con el class agregar y los pasa a un array
-allBoton.forEach(ele => ele.addEventListener('click', () => {
-  agregaCarrito(ele.getAttribute('id'), ele.getAttribute(`data-price`)) //ele significa elemento
-  muestraCarrito();
-  LStorage(cart)
+allBoton.forEach(ele => ele.addEventListener('click', () => { //loopea por el array de botones y les agrega un evento 
+  agregaCarrito(ele.getAttribute('id'), ele.getAttribute(`data-price`)) //ele significa elemento y dependiendo del boton agarra los atributos
+  muestraCarrito();//actualiza el carrito en pantalla
+  LStorage(cart)//actualiza el carrito en storage
 
 }))
 
 
 //elimina item del carrito y maneja clicks
 
-itemList.onclick = function (e) {
+itemList.onclick = function (e) { //funcion de un evento, cuando clickee un item del array itemlist
   //console.log("clickeado");
-  console.log(e.target);
-  if (e.target && e.target.classList.contains('removerItem')) {
-    const nombre = e.target.dataset.name //
-    removerItem(nombre)
-    LStorage(cart)
-  }
+  console.log(e.target);//control interno
+  if (e.target && e.target.classList.contains('removerItem')) {//si el target es parte de la lista del carrito y ademas es un boton remover
+    const nombre = e.target.dataset.name //crea var con el nombre del boton
+    removerItem(nombre)//remueve el item seleccionado
+   } else if (e.target && e.target.classList.contains('agrega1')){
+     const name = e.target.dataset.name 
+     agregaCarrito(name);
+
+   }else if (e.target && e.target.classList.contains('remueve1')){
+    const nombre = e.target.dataset.name //crea var con el nombre del boton
+    removerItem(nombre, 1);
+   }
 
 }
 

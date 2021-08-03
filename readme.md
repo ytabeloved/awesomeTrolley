@@ -1,2 +1,4 @@
-fun and amazing shopping trolley with space invaders.
-//one can hope it works
+fun and amazing shopping trolley made by the laziest.
+
+
+it will be a miracle if it works :o
