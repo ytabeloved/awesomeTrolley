@@ -177,11 +177,21 @@ function Total() {
 
 //funciones para limpiar el carrito
 
-/*function removerItem(nombre){
-    for(let i= 0: i < cart.length; i++){
-        if(cart[i].name===name){
+function removerItem(nombre, qty =0){
+    for(let i= 0; i < cart.length ; i++){
+        if(cart[i].nombre===nombre){
+            if(qty>0){
+                cart[i].qty -=qty
+                LStorage(cart)//si elimino un item salvo el nuevo carrito sin ese item en local storage
+            }
+            if(cart[i].qty<1 || qty === 0){
             cart.splice(i, 1)
+            }
+            localStorage.clear()// si solo queda el ultimo item del carrito elimina todo 
+            muestraCarrito()//y muestro carrito
+            
             return
+            
         }
     }
-}*/
+}
