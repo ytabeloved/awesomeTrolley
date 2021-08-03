@@ -60,7 +60,7 @@ const subTotal = document.getElementById("cart-total");
 
 muestraCarrito();//muestra carrito si es que hay items en locale storage si no carrito estara vacio
 
-//ejemplo de evento agrega a carrito 
+// evento agrega a carrito 
 let allBoton = Array.from(document.querySelectorAll(".agregar")); //selecciona todos los botones con el class agregar y los pasa a un array
 allBoton.forEach(ele => ele.addEventListener('click', () => {
   agregaCarrito(ele.getAttribute('id'),ele.getAttribute(`data-price`))//ele significa elemento
@@ -68,6 +68,10 @@ allBoton.forEach(ele => ele.addEventListener('click', () => {
   LStorage(cart)  
   
 }))
+
+
+//elimina item del carrito
+
 
 
 
