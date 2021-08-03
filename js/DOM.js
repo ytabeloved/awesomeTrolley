@@ -51,18 +51,22 @@ saludo.appendChild(h1);
 
 
 //EVENT LISTENERS DESAFIO 9
+//carga carrito guardado
+
 
 const itemList = document.getElementById("lista items");
 const cartQty = document.getElementById("cart-qty");
 const subTotal = document.getElementById("cart-total");
 
+muestraCarrito();
 
 //ejemplo de evento agrega a carrito 
 let allBoton = Array.from(document.querySelectorAll(".agregar")); //selecciona todos los botones con el class agregar y los pasa a un array
 allBoton.forEach(ele => ele.addEventListener('click', () => {
   agregaCarrito(ele.getAttribute('id'),ele.getAttribute(`data-price`))//ele significa elemento
   muestraCarrito();
- 
+  LStorage(cart)  
+  
 }))
 
 

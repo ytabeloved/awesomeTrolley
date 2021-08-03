@@ -86,7 +86,15 @@ const stockTienda = [{
 
 /*PREPARACION PARA PRE ENTREGA y desafio 9*/
 
-const cart = []; // carrito vacio
+//load cart
+let loadCart = function () {
+    if (localStorage.getItem('cartStorage')) {
+        cartStorage = JSON.parse(localStorage.getItem('cartStorage'));
+        return cartStorage
+    }
+}
+
+const cart = loadCart(); // carrito vacio
 
 
 //funcion agregar y mostrar carrito
@@ -105,7 +113,7 @@ function agregaCarrito(nombre, precio) {
     } //arma un item basado en lso obj principales para usar para el carrito
     cart.push(item)
     //return el carrito 
-    return cart;    
+    return cart;
 };
 
 
@@ -118,21 +126,8 @@ function Qty() {
     return qty
 }
 
-
-//usaLOCAL STORAGE...no funcionaaaaa
-console.log(cart.length)
-const cartLS = (clave, valor) => {
-    localStorage.setItem(clave, valor)
-};
-cartLS("carritoGuardado", JSON.stringify(cart));
-
-JSON.parse(localStorage.getItem("cart")) //recupera el carrito guardado
-
-
-
-
 //MUESTRA EL CARRITO EN EL MODAL
-function muestraCarrito() {
+function muestraCarrito() {    
     cartQty.innerHTML = `tiene ${Qty()} items en su carrito`; // llama la funcion de la cantidad Y LA APLICA SOBRE LA VAR DEFINIDA EN DOM
 
     let itemGlosa = "";
@@ -144,10 +139,23 @@ function muestraCarrito() {
     }
     itemList.innerHTML = itemGlosa;
     subTotal.innerHTML = `su total es $${Total()} pesos`; //subtotal del carrito
-    //por aqui asumo recupero el maldito JSON
+
 };
 
+//subfuncion locl storage
 
+function LStorage(item) {
+    let cartStorage = []
+    item.forEach(element => {
+        cartStorage.push({
+            nombre: element.nombre,
+            precio: element.precio,
+            qty: element.qty
+        })
+        localStorage.setItem('cartStorage', JSON.stringify(cartStorage))
+    });
+
+}
 
 
 //SUB-funcion total
