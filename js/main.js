@@ -96,16 +96,16 @@ let loadCart = function () {
     }
 }
 
-const cart = loadCart(); // carrito vacio o con memoria, le digo oye tu carrito seras siempre la sesion anterior guardada
+const cart = loadCart(); // carrito vacio o con memoria, le digo, oye tu!! carrito!! seras siempre la sesion anterior guardada
 
 
 //funcion agregar y mostrar carrito
 
 function agregaCarrito(nombre, precio) {
-    for (let i = 0; i < cart.length; i++) {
-        if (cart[i].nombre === nombre) {
+    for (let i = 0; i < cart.length; i++) { //iba a usar un forEach pero se me complico
+        if (cart[i].nombre === nombre) { //si el item ya esta en el carro solo agregale mas
             cart[i].qty += 1;
-            muestraCarrito()//actualiza carrito
+            muestraCarrito() //actualiza carrito
             return
         }
     }
@@ -114,7 +114,7 @@ function agregaCarrito(nombre, precio) {
         precio: precio,
         qty: 1
     } //arma un item basado en lso obj principales para usar para el carrito
-    cart.push(item)
+    cart.push(item) //lo pushea al array carrito
     //return el carrito 
     return cart;
 };
@@ -180,21 +180,29 @@ function Total() {
 
 //funciones para limpiar el carrito
 
-function removerItem(nombre, qty =0){
-    for(let i= 0; i < cart.length ; i++){
-        if(cart[i].nombre===nombre){
-            if(qty>0){
-                cart[i].qty -=qty
-                LStorage(cart)//si elimino un item salvo el nuevo carrito sin ese item en local storage
+function removerItem(nombre, qty = 0) {
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].nombre === nombre) {
+            if (qty > 0) {
+                cart[i].qty -= qty //elimino un item del carrito (qty)
+                LStorage(cart) //si elimino un item, guardo el nuevo carrito sin ese item en local storage
+                muestraCarrito() //y muestro carrito
             }
-            if(cart[i].qty<1 || qty === 0){
-            cart.splice(i, 1)
+
+            if (cart[i].qty < 1 || qty === 0) {
+                cart.splice(i, 1) //si queda solo un qty en el carrito lo saca del array
+                LStorage(cart)
+                muestraCarrito() //y muestro carrito
             }
-            localStorage.clear()// si solo queda el ultimo item del carrito elimina todo 
-            muestraCarrito()//y muestro carrito
-            
+
+            if (cart.length < 1 || cart[i].qty < 1) {
+                cart.splice(i, 1)
+                localStorage.clear() // si solo queda el ultimo item del carrito elimina todo 
+                LStorage(cart)
+                muestraCarrito()
+            }
             return
-            
+
         }
     }
 }

@@ -80,11 +80,11 @@ itemList.onclick = function (e) { //funcion de un evento, cuando clickee un item
     removerItem(nombre)//remueve el item seleccionado
    } else if (e.target && e.target.classList.contains('agrega1')){
      const name = e.target.dataset.name 
-     agregaCarrito(name);
+     agregaCarrito(name);//suma un item a qty
 
    }else if (e.target && e.target.classList.contains('remueve1')){
     const nombre = e.target.dataset.name //crea var con el nombre del boton
-    removerItem(nombre, 1);
+    removerItem(nombre, 1);//remueve 1 de qty
    }
 
 }
