@@ -135,7 +135,8 @@ function Qty() {
 
 //MUESTRA EL CARRITO EN EL MODAL
 function muestraCarrito() {
-    cartQty.innerHTML = `tiene ${Qty()} items en su carrito`; // llama la funcion de la cantidad Y LA APLICA SOBRE LA VAR DEFINIDA EN DOM
+    $(cartQty).text(`tiene ${Qty()} items en su carrito`);
+    //cartQty.innerHTML = `tiene ${Qty()} items en su carrito`; // llama la funcion de la cantidad Y LA APLICA SOBRE LA VAR DEFINIDA EN DOM
     let itemGlosa = "";
 
     for (let i = 0; i < cart.length; i++) { //recorro array
@@ -147,8 +148,9 @@ function muestraCarrito() {
         <button data-name="${cart[i].nombre}" class="btn btn-danger btn-sm removerItem">quitar</button>          
         </li>` //agrega el elemento html al modal de carrito Y LOS BOTONES DE QUITAR Y AGREGAR POR NUM
     }
-
-    itemList.innerHTML = itemGlosa;
+    $(itemList).html(itemGlosa)
+    //itemList.innerHTML = itemGlosa;
+    $(subTotal).text(`su total es $${Total()} pesos`);
     subTotal.innerHTML = `su total es $${Total()} pesos`; //subtotal del carrito
 
 };
@@ -205,4 +207,13 @@ function removerItem(nombre, qty = 0) {
 
         }
     }
+}
+
+function limpiaCarrito(cart) {
+    cart.splice(0, cart.length)
+    localStorage.clear() // si solo queda el ultimo item del carrito elimina todo 
+    cart = []
+    muestraCarrito()
+    return
+
 }
