@@ -12,6 +12,9 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'>
+</script>
     <title>Ajuar de Mia</title>
 </head>
 
@@ -57,9 +60,11 @@
         <div id="saludo"></div>
     </div>
     <!-- Button trigger modal -->
-    <img src="/asset/img/ositologo.jpg" class="rounded float-end fixed-bottom carrito" id="carritoImg" alt="carrito"
-        width="80" height="70" data-bs-toggle="modal" data-bs-target="#carrito">
-
+    <span>
+        <!--<i class="shopping-cart"></i>-->
+        <img src="/asset/img/ositologo.jpg" class="rounded float-end fixed-bottom carrito shopping-cart" id="carritoImg"
+            alt="carrito" width="80" height="70" data-bs-toggle="modal" data-bs-target="#carrito">
+    </span>
     <!-- Modal -->
     <div class="modal fade" id="carrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -82,7 +87,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger limpiar-carro"modal">limpiar carrito</button>
+                    <button type="button" class="btn btn-danger limpiar-carro" modal">limpiar carrito</button>
                     <button type="button" class="btn btn-primary">guardar</button>
                 </div>
             </div>
@@ -100,6 +105,7 @@
     </footer>
     <script src="/js/main.js"></script>
     <script src="js/DOM.js"></script>
+    <script src="js/animation.js"></script>
 </body>
 
 </html>

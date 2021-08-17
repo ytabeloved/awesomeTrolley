@@ -45,7 +45,7 @@ const stockTienda = [{
         itemNum: 3,
     },
     {
-        nombre: "DISFRAZ OSITO",
+        nombre: "OSITO",
         precio: 1500,
         stock: 0,
         descr: "descripcion prod",

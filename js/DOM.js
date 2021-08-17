@@ -2,8 +2,8 @@
 
 for (const producto of stockTienda) { //AQUI HACEMOS LAS TARJETAS DE PRODUCTOS
   let items = $("#itemsDisplay")[0]; //agregue jquery
-  items.innerHTML += `<div class="card" style="width: 18rem;">
-    <img src="${producto.foto}" class="card-img-top" alt="...">
+  items.innerHTML += `<div class="card item clear" id="${producto.nombre}" style="width: 18rem;">
+    <img src="${producto.foto}" class="card-img-top " id="${producto.nombre}img" alt="item">
     <div class="card-body">
       <h5 class="card-title">${producto.nombre}</h5>
       <h6 class="card-title">valor: $ ${producto.precio} </h6>
@@ -11,7 +11,7 @@ for (const producto of stockTienda) { //AQUI HACEMOS LAS TARJETAS DE PRODUCTOS
       <p class="card-text">Sku: ${producto.itemNum}</p>
       <div class="row row-cols-2">
       <div class= col col-lg-2>
-      <button class="btn btn-primary agregar"  id="${producto.nombre}" data-price ="${producto.precio}" type= "button">agregar</button>
+      <button class="btn btn-primary agregar add-to-cart "  id="${producto.nombre}" data-price ="${producto.precio}" type= "button">agregar</button>
       </div>
       <div class= col col-lg-2>
      
