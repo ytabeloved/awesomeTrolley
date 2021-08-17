@@ -12,18 +12,18 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  
-<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'>
-</script>
+
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'>
+    </script>
     <title>Ajuar de Mia</title>
 </head>
 
 <body>
     <nav class="navbar fixed-top navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="/asset/img/ositologo.jpg" alt="" width="30" height="24"
+        <div class="container-fluid nav">
+            <a class="navbar-brand links" href="#aboutUs" ><img src="/asset/img/ositologo.jpg" alt="" width="30" height="24"
                     class="d-inline-block align-text-top"></a>
-            <a class="navbar-brand" href="#">Ajuar de Mia</a>
+            <a class="navbar-brand links" href="#aboutUs">Ajuar de Mia</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -31,33 +31,32 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link links " href="#aboutUs" id="link-home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown link
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                        <a class="nav-link links" aria-current="page" href="#itemsDisplay" id="link-tienda">Tienda</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div id="itemsDisplay" class="row">
+    <div id="itemsDisplay" class="row tienda navLinks">
         <h2 class="placeholder">.</h2>
-        <div id="saludo"></div>
+        <div class="saludo">  <br></div>
+        <p>Bienvenidos a nuestra tienda, tenemos la mejor seleccion de productos para tu bebe!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae architecto commodi laboriosam qui
+            repellendus. Maiores, quod. Beatae aut blanditiis obcaecati odio dolor eius ipsum, veritatis optio
+            quibusdam, nesciunt fugiat iusto.</p>
+    </div>
+
+    <div id="aboutUs" class="row home navLinks ">
+        <h2 class="placeholder"> . </h2>
+        <div class="saludo"> <br></div>
+        <p>este es el about us</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, quia! Quam, dolorum inventore dolores
+            tempora voluptatum voluptatibus veniam quos ut maxime vel magnam, facere cupiditate error nostrum,
+            laudantium aut adipisci.</p>
     </div>
     <!-- Button trigger modal -->
     <span>

@@ -140,12 +140,19 @@ function muestraCarrito() {
     let itemGlosa = "";
 
     for (let i = 0; i < cart.length; i++) { //recorro array
-        itemGlosa += `<li>${cart[i].nombre}
+        itemGlosa += `<li class="item-carrito">
+        <div class="row row-cols-2 cart-line">
+        <div class="item-data">
+        ${cart[i].nombre}
         $${cart[i].precio} x ${cart[i].qty} = 
         $${cart[i].precio* cart[i].qty} 
+        </div> 
+        <div class="cart-item">
         <button data-name="${cart[i].nombre}" class="agrega1">+</button> 
         <button data-name="${cart[i].nombre}" class="remueve1">-</button>
-        <button data-name="${cart[i].nombre}" class="btn btn-danger btn-sm removerItem">quitar</button>          
+        <button data-name="${cart[i].nombre}" class="btn btn-danger btn-sm removerItem">quitar</button
+        </div> 
+        </div>         
         </li>` //agrega el elemento html al modal de carrito Y LOS BOTONES DE QUITAR Y AGREGAR POR NUM
     }
     $(itemList).html(itemGlosa)

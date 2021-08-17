@@ -1,7 +1,21 @@
+html {
+    position: relative;
+    max-width: 100%;
+}
 
-html{
-position: relative;
-min-height: 100%;
+body {
+    width: 99%;
+
+}
+
+#itemsDisplay {
+    padding-left: 1.5vw;
+    display: none;
+}
+
+#aboutUs {
+    padding-left: 1.5vw;
+
 }
 
 placeholder {
@@ -15,7 +29,7 @@ placeholder {
 
 .placeholder {
     opacity: 0%;
-    
+
 }
 
 .carrito {
@@ -23,7 +37,7 @@ placeholder {
     margin-bottom: 2vh;
 }
 
-.cartNumber{
+.cartNumber {
     margin-left: 90vw;
     margin-bottom: 2vh;
 
@@ -31,12 +45,17 @@ placeholder {
 
 .navbar {
     max-width: 99vw;
-  
+
 }
 
 .card-body {
     max-height: 200px;
 
+}
+
+.card {
+    margin: 5px;
+    margin-top: 5px !important;
 }
 
 .footer {
@@ -55,14 +74,25 @@ placeholder {
 
 .items {
     display: block;
-    
+
 }
+
 .item {
-   
     float: left;
- 
 }
 
 .clear {
     clear: both;
+}
+
+.cart-line {
+    padding: 8px;
+}
+
+.item-data {
+    width: 60% !important;
+}
+
+.cart-item {
+    width: 40% !important;
 }

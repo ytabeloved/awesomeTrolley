@@ -24,12 +24,17 @@ for (const producto of stockTienda) { //AQUI HACEMOS LAS TARJETAS DE PRODUCTOS
 //<button class="btn btn-danger botonRemover" type= "button">remover</button> boton remover 
 
 
-//mensaje de bienvenida random 
+//mensaje de bienvenida random ahora son baby facts!!!
 
 
-let saludos = ["Hola Florecita!!", "Hola cacahuate!!", "Bienvenido meloncito!",
-  "Hola ratoncito!!", "hola gatito!!", "welcome pastito!!"
-];
+let saludos = ["YOU CAN’T GIVE THEM JUST ANY NAME.", "IN SOME PLACES, BABIES ARE VERY RARE.", "THEY’VE EVOLVED TO BE ADORABLE.",
+  "WE NATURALLY WANT TO SQUEEZE THEM.", "EVEN TODDLERS KNOW THEY’RE CUTE.", "THEY’RE DRAWN TO SURPRISE.", 
+  "THEY HAVE A UNIQUE REFLEX THAT DISAPPEARS WITH AGE.", "THEY ALREADY KNOW TO HOLD THEIR BREATH UNDERWATER.", "THEY REALLY DO LIKE LULLABIES.",
+   "THEY’RE WIRED TO IMITATE.", "THEY CAN LEARN IN THE WOMB.","THEY CAN LEARN IN THE WOMB.", "THEY CAN’T REALLY SEE.",
+   "THEIR TASTE PREFERENCES CAN DEVELOP BEFORE THEY’RE BORN.", "THEY EAT LESS THAN YOU MIGHT THINK.","THEY HAVE UNIQUE HAIR.",
+   "THEIR HEADS SMELL AMAZING."
+
+]; 
 //funcion de index random
 
 function random(min, max) {
@@ -41,12 +46,13 @@ let mystery = Math.round(random(0, (saludos.length - 1)));
 
 
 //mnipulacion del DOM para el saludo
-let saludo = $('#saludo').get(0); //jquery version
+let saludo = $('.saludo').get(); //jquery version
 
 let hola = saludos[mystery];
 //cambio todo a jquery
-let h1 = $("<h1></h1>").text(hola);
-$(saludo).append(h1)
+let h1 = "<h2>Cute baby facts:</h2>"
+let h2 = $("<h4></h4>").text(hola);
+$(saludo).append(h1, h2)
 $("h1").addClass('display-1')
 
 //version vanilla
@@ -113,3 +119,16 @@ $(".limpiar-carro").on("click", function () {
   $("#lista-items").hide();
   $(subTotal).text(`su total es $0 pesos`);
 });
+
+
+//ocultar tienda y home por los click del navegador
+
+$('.links').click(function () {
+  console.log("click click bitch 2")
+  var id = $(this).attr('href')
+  var clas = $(this).attr('id')
+  $('.nav-link').removeClass('active');
+  $('.navLinks').hide();  
+  $(id).css('display', 'flex');
+  $('#'+clas).addClass('active');
+})
