@@ -24,9 +24,9 @@ $('.add-to-cart').on('click', function (e) {
             .animate({
             'top': cart.offset().top + 10,
                 'left': cart.offset().left + 10,
-                'width': 75,
-                'height': 75
-        }, 2000, 'easeInOutExpo');
+                'width': 50,
+                'height':50
+        }, 1500, 'easeInOutExpo');
         
         setTimeout(function () {
             cart.effect("shake", {
