@@ -11,7 +11,7 @@ $('.add-to-cart').on('click', function (e) {
         var imgclone =  imgtodrag.clone()
             .offset({
             top: $("#"+imgtodrag[0].id).offset().top,
-            right:  $("#"+imgtodrag[0].id).offset().right
+            left:  $("#"+imgtodrag[0].id).offset().left
         })
             .css({
             'opacity': '0.5',
@@ -23,7 +23,7 @@ $('.add-to-cart').on('click', function (e) {
             .appendTo($('body'))
             .animate({
             'top': cart.offset().top + 10,
-                'right': cart.offset().right + 10,
+                'left': cart.offset().left + 10,
                 'width': 75,
                 'height': 75
         }, 2000, 'easeInOutExpo');
