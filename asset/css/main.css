@@ -96,3 +96,14 @@ placeholder {
 .cart-item {
     width: 40% !important;
 }
+
+#bio {
+    max-width: 70%;
+    margin: 15px auto;
+    padding: 10px;
+  }
+
+.babyV{
+    height: 300px;
+
+}
