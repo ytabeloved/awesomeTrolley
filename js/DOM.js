@@ -151,7 +151,7 @@ $('.links').click(function () {
     // hide the button
     $(this).hide();
     // send the request and get the response
-    $bio.load('/asset/baby.txt', completeFunction);
+    $bio.load("/asset/baby.txt", completeFunction);
   });
   
   
